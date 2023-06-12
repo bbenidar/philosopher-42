@@ -6,7 +6,7 @@
 /*   By: bbenidar <bbenidar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:00 by bbenidar          #+#    #+#             */
-/*   Updated: 2023/06/08 15:51:56 by bbenidar         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:03:19 by bbenidar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_philo_two(t_philo *philosopher)
 	pthread_mutex_unlock(&philosopher->next->fork);
 	pthread_mutex_unlock(&philosopher->fork);
 	ft_philo_three(philosopher);
+	philosopher->count_eting++;
 }
 
 void	*ft_philo(void *philo)
@@ -81,7 +82,6 @@ void	*ft_philo(void *philo)
 			printf("time : %ld | %d has taken a fork\n", (get_time()
 					- philosopher->time), philosopher->id);
 		pthread_mutex_lock(&philosopher->sef_mutex);
-		philosopher->count_eting++;
 		pthread_mutex_unlock(&philosopher->sef_mutex);
 		pthread_mutex_unlock(&philosopher->printf_mutex);
 		pthread_mutex_unlock(&philosopher->flag_mutex);

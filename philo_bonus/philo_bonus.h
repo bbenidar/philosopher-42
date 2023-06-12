@@ -6,7 +6,7 @@
 /*   By: bbenidar <bbenidar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:33:37 by bbenidar          #+#    #+#             */
-/*   Updated: 2023/06/09 15:19:25 by bbenidar         ###   ########.fr       */
+/*   Updated: 2023/06/11 17:02:04 by bbenidar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,22 @@
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <signal.h>
 # include <fcntl.h>
 # include <semaphore.h>
 # include <semaphore.h>
 # include <sys/time.h>
+#include <sys/types.h>
 # include <unistd.h>
 
 typedef struct s_philo
 {
-	int				id;
-	pthread_t		thread;
-	pthread_mutex_t	fork;
-	pthread_mutex_t	printf_mutex;
-	pthread_mutex_t	sef_mutex;
-	pthread_mutex_t	flag_mutex;
+	sem_t	*fork;
+	pthread_t 		checker;
+	sem_t	*printf_lock;
+	sem_t	*eat_lock;
+	sem_t	*flag_p;
+	int 			id;
 	long			time;
 	int				t_to_die;
 	int				t_to_eat;
@@ -39,7 +41,6 @@ typedef struct s_philo
 	int				flag;
 	int				each_philo_must_eat;
 	int				count_eting;
-	struct s_philo	*next;
 }					t_philo;
 
 

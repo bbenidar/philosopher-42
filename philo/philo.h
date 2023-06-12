@@ -6,17 +6,17 @@
 /*   By: bbenidar <bbenidar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 11:14:12 by bbenidar          #+#    #+#             */
-/*   Updated: 2023/06/09 15:19:35 by bbenidar         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:01:55 by bbenidar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+# include <fcntl.h>
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <fcntl.h>
 # include <sys/time.h>
 # include <unistd.h>
 
@@ -46,6 +46,7 @@ long long int		ft_atoi_long(const char *str);
 //chaecker.c
 int					ft_check_ac(int ac);
 int					ft_check_av(char av);
+int					ft_check_eating(t_philo *tmp, int nb_philo);
 
 //creat_philo.c
 t_philo				*creat_list(int ac, char **av, int i);

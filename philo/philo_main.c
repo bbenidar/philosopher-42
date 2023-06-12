@@ -6,7 +6,7 @@
 /*   By: bbenidar <bbenidar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 11:14:18 by bbenidar          #+#    #+#             */
-/*   Updated: 2023/06/09 11:52:21 by bbenidar         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:43:53 by bbenidar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_free(t_philo *tmp, int nb_philo)
 	}
 }
 
-void	main_two(t_philo *tmp, int i)
+void	main_two(t_philo *tmp, int i, int j)
 {
 	while (1)
 	{
@@ -92,7 +92,7 @@ void	main_two(t_philo *tmp, int i)
 			pthread_mutex_unlock(&tmp->printf_mutex);
 			break ;
 		}
-		if (tmp->count_eting == tmp->each_philo_must_eat)
+		if (ft_check_eating(tmp, j))
 			break ;
 		pthread_mutex_unlock(&tmp->sef_mutex);
 		tmp = tmp->next;
@@ -109,7 +109,7 @@ int	main(int ac, char **av)
 	gettimeofday(&tv, NULL);
 	if (!ft_par_check(ac, av))
 		return (1);
-	nb_philo = ft_atoi(av[1]);
+	nb_philo = ft_atoi(av[1]); 
 	if (!(nb_philo))
 	{
 		printf("\033[0;31mError: <wrong number of philosophers>\n\033[0m\n");
@@ -124,6 +124,6 @@ int	main(int ac, char **av)
 		tmp = tmp->next;
 		nb_philo--;
 	}
-	main_two(tmp, i);
+	main_two(tmp, i, i);
 	ft_free(tmp, i);
 }
