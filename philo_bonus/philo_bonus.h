@@ -29,10 +29,13 @@ typedef struct s_philo
 {
 	sem_t	*fork;
 	pthread_t 		checker;
+	pthread_t 		checker_2;
 	sem_t	*printf_lock;
 	sem_t	*eat_lock;
 	sem_t	*flag_p;
+	sem_t	*hada;
 	int 			id;
+	int 			nb_philo;
 	long			time;
 	int				t_to_die;
 	int				t_to_eat;

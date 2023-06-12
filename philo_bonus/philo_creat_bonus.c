@@ -60,6 +60,13 @@ t_philo	*ft_creat_philosophers(int ac, char **av)
 		printf("Error: sem_eat\n");
 		exit(1);
 	}
+		sem_unlink("/hada");
+	philo->hada = sem_open("/hada",O_CREAT| O_EXCL,0644, 0);
+	if (philo->hada == SEM_FAILED)
+	{
+		printf("Error: sem_eat\n");
+		exit(1);
+	}
 	sem_unlink("/PHILO_hh");
 	philo->flag_p = sem_open("/PHILO_hh",O_CREAT| O_EXCL,0644, 1);
 	if (philo->flag_p == SEM_FAILED)
@@ -67,6 +74,7 @@ t_philo	*ft_creat_philosophers(int ac, char **av)
 		printf("Error: sem_hh\n");
 		exit(1);
 	}
+	philo->nb_philo = ft_atoi(av[1]);
 	philo->t_to_die = ft_atoi(av[2]);
 	philo->t_to_eat = ft_atoi(av[3]);
 	philo->t_to_sleep = ft_atoi(av[4]);
