@@ -13,7 +13,6 @@
 #ifndef PHILO_BONUS_H
 # define PHILO_BONUS_H
 
-
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -22,20 +21,20 @@
 # include <semaphore.h>
 # include <semaphore.h>
 # include <sys/time.h>
-#include <sys/types.h>
+# include <sys/types.h>
 # include <unistd.h>
 
 typedef struct s_philo
 {
-	sem_t	*fork;
-	pthread_t 		checker;
-	pthread_t 		checker_2;
-	sem_t	*printf_lock;
-	sem_t	*eat_lock;
-	sem_t	*flag_p;
-	sem_t	*hada;
-	int 			id;
-	int 			nb_philo;
+	sem_t			*fork;
+	pthread_t		checker;
+	pthread_t		checker_2;
+	sem_t			*printf_lock;
+	sem_t			*eat_lock;
+	sem_t			*flag_p;
+	sem_t			*hada;
+	int				id;
+	int				nb_philo;
 	long			time;
 	int				t_to_die;
 	int				t_to_eat;
@@ -45,7 +44,6 @@ typedef struct s_philo
 	int				each_philo_must_eat;
 	int				count_eting;
 }					t_philo;
-
 
 //utils.c
 int					ft_atoi(const char *str);
@@ -60,5 +58,8 @@ void				ft_my_sleep(int sleep);
 //chaecker_bous.c
 int					ft_check_ac(int ac);
 int					ft_check_av(char av);
+void				ft_philo(t_philo *philosopher, int id);
+void				*ft_checker_2(void *philo);
+void				eatcheck(t_philo *philosopher);
 
 #endif

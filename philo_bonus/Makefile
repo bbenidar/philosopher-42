@@ -14,7 +14,7 @@ NAME = philo_bonus
 
 CC = gcc
 # FLAGS = -Wall -Wextra -Werror -pthread #-fsanitize=thread 
-SRC = philo_bonus.c utils.c philo_creat_bonus.c cheacker_bous.c 
+SRC = philo_bonus.c utils.c philo_creat_bonus.c cheacker_bous.c routine_bonus.c
 
 OBG = $(SRC:.c=.o)
 
