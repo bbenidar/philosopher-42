@@ -35,6 +35,9 @@ void	ft_philo_three(t_philo *philosopher)
 		pthread_mutex_unlock(&philosopher->printf_mutex);
 	}
 	pthread_mutex_unlock(&philosopher->flag_mutex);
+	pthread_mutex_lock(&philosopher->count_mutex);
+	philosopher->count_eting++;
+	pthread_mutex_unlock(&philosopher->count_mutex);
 }
 
 void	ft_philo_two(t_philo *philosopher)
@@ -63,7 +66,6 @@ void	ft_philo_two(t_philo *philosopher)
 	pthread_mutex_unlock(&philosopher->next->fork);
 	pthread_mutex_unlock(&philosopher->fork);
 	ft_philo_three(philosopher);
-	philosopher->count_eting++;
 }
 
 void	*ft_philo(void *philo)

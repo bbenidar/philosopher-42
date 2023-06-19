@@ -58,6 +58,7 @@ void				ft_my_sleep(int sleep);
 //chaecker_bous.c
 int					ft_check_ac(int ac);
 int					ft_check_av(char av);
+void				ft_free_close(t_philo *tmp);
 void				ft_philo(t_philo *philosopher, int id);
 void				*ft_checker_2(void *philo);
 void				eatcheck(t_philo *philosopher);

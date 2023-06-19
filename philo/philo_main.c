@@ -62,7 +62,6 @@ void	ft_free(t_philo *tmp, int nb_philo)
 	{
 		pthread_mutex_destroy(&tmp->printf_mutex);
 		pthread_mutex_destroy(&tmp->fork);
-		pthread_mutex_destroy(&tmp->flag_mutex);
 		pthread_mutex_destroy(&tmp->sef_mutex);
 		pthread_detach(tmp->thread);
 		tmp = tmp->next;
@@ -109,7 +108,7 @@ int	main(int ac, char **av)
 	gettimeofday(&tv, NULL);
 	if (!ft_par_check(ac, av))
 		return (1);
-	nb_philo = ft_atoi(av[1]); 
+	nb_philo = ft_atoi(av[1]);
 	if (!(nb_philo))
 	{
 		printf("\033[0;31mError: <wrong number of philosophers>\n\033[0m\n");

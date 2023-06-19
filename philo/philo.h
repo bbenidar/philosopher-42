@@ -27,6 +27,7 @@ typedef struct s_philo
 	pthread_mutex_t	fork;
 	pthread_mutex_t	printf_mutex;
 	pthread_mutex_t	sef_mutex;
+	pthread_mutex_t	count_mutex;
 	pthread_mutex_t	flag_mutex;
 	long			time;
 	int				t_to_die;

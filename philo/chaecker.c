@@ -39,8 +39,10 @@ int	ft_check_eating(t_philo *tmp, int nb_philo)
 	i = 0;
 	while (i < nb_philo)
 	{
-		if (tmp->each_philo_must_eat > tmp->count_eting)
-			return (0);
+		pthread_mutex_lock(&tmp->count_mutex);
+		if (tmp->each_philo_must_eat != tmp->count_eting)
+			return (pthread_mutex_unlock(&tmp->count_mutex), 0);
+		pthread_mutex_unlock(&tmp->count_mutex);
 		i++;
 	}
 	return (1);

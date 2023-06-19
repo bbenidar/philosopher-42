@@ -41,6 +41,7 @@ t_philo	*creat_list(int ac, char **av, int i)
 	pthread_mutex_init(&philo->printf_mutex, NULL);
 	pthread_mutex_init(&philo->sef_mutex, NULL);
 	pthread_mutex_init(&philo->flag_mutex, NULL);
+	pthread_mutex_init(&philo->count_mutex, NULL);
 	philo->t_to_die = ft_atoi(av[2]);
 	philo->t_to_eat = ft_atoi(av[3]);
 	philo->t_to_sleep = ft_atoi(av[4]);

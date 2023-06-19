@@ -31,3 +31,12 @@ int	ft_check_av(char av)
 	}
 	return (1);
 }
+
+void	ft_free_close(t_philo *tmp)
+{
+	sem_close(tmp->printf_lock);
+	sem_close(tmp->eat_lock);
+	sem_close(tmp->flag_p);
+	free(tmp);
+	kill(0, SIGINT);
+}

@@ -15,7 +15,6 @@
 void	*ft_dead_check(void *philo)
 {
 	t_philo		*philosopher;
-	pthread_t	dead;
 
 	philosopher = (t_philo *)philo;
 	while (1)
@@ -31,6 +30,7 @@ void	*ft_dead_check(void *philo)
 		}
 		sem_post(philosopher->eat_lock);
 		eatcheck(philosopher);
+		usleep(200);
 	}
 }
 

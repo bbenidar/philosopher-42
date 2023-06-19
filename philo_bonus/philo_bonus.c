@@ -63,10 +63,6 @@ void	eatcheck(t_philo *philosopher)
 		if (philosopher->count_eting == philosopher->each_philo_must_eat)
 		{
 			philosopher->flag = 0;
-			sem_wait(philosopher->printf_lock);
-			// printf("time : %ld | %d is full\n", (get_time() - philosopher->time),
-			// 	philosopher->id);
-			sem_post(philosopher->printf_lock);
 			sem_post(philosopher->hada);
 		}
 	}
@@ -77,6 +73,7 @@ void	main_2(int ac, int nb_philo, char **av)
 	t_philo	*tmp;
 	int		i;
 	int		pid;
+	int		childstatus;
 
 	i = nb_philo;
 	tmp = ft_creat_philosophers(ac, av);
@@ -87,14 +84,15 @@ void	main_2(int ac, int nb_philo, char **av)
 		if (pid == 0)
 			ft_philo(tmp, i - nb_philo + 1);
 		nb_philo--;
+		usleep(200);
 	}
+	waitpid(-1, &childstatus, 0);
+	ft_free_close(tmp);
 }
 
 int	main(int ac, char **av)
 {
 	int				nb_philo;
-	int				childstatus;
-	int				i;
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
@@ -107,7 +105,5 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	main_2(ac, nb_philo, av);
-	waitpid(-1, &childstatus, 0);
-	kill(0, SIGINT);
 	return (0);
 }

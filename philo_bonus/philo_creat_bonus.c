@@ -29,7 +29,7 @@ void	ft_my_sleep(int sleep)
 		usleep(100);
 }
 
-t_philo	*creat_semaphors(t_philo *philo, char **av, int ac)
+t_philo	*creat_semaphors(t_philo *philo)
 {
 	sem_unlink("/hada");
 	philo->hada = sem_open("/hada", O_CREAT | O_EXCL, 0644, 0);
@@ -95,7 +95,7 @@ t_philo	*ft_creat_philosophers(int ac, char **av)
 		printf("Error: sem_open\n");
 		exit(1);
 	}
-	creat_semaphors(philo, av, ac);
+	creat_semaphors(philo);
 	philo = creat_philo(philo, av, ac);
 	return (philo);
 }
