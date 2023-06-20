@@ -32,6 +32,8 @@ int	ft_par_check(int ac, char **av)
 	int	i;
 	int	j;
 
+	if (!ft_check_av_eat(ac, av))
+		return (0);
 	if (!ft_check_ac(ac))
 		return (0);
 	else
@@ -58,13 +60,16 @@ int	ft_par_check(int ac, char **av)
 
 void	ft_free(t_philo *tmp, int nb_philo)
 {
+	t_philo *tmp2;
 	while (nb_philo > 0)
 	{
+			tmp2 = tmp->next;
 		pthread_mutex_destroy(&tmp->printf_mutex);
 		pthread_mutex_destroy(&tmp->fork);
 		pthread_mutex_destroy(&tmp->sef_mutex);
 		pthread_detach(tmp->thread);
-		tmp = tmp->next;
+		free(tmp);
+		tmp = tmp2;
 		nb_philo--;
 	}
 }

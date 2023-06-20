@@ -18,22 +18,16 @@ void	ft_philo_three(t_philo *philosopher)
 
 	gettimeofday(&tv, NULL);
 	pthread_mutex_lock(&philosopher->flag_mutex);
-	pthread_mutex_lock(&philosopher->printf_mutex);
 	if (philosopher->flag)
 		printf("time : %ld | %d is sleeping\n", (get_time()
 				- philosopher->time), philosopher->id);
-	pthread_mutex_unlock(&philosopher->printf_mutex);
 	pthread_mutex_unlock(&philosopher->flag_mutex);
 	ft_my_sleep(philosopher->t_to_sleep);
 	gettimeofday(&tv, NULL);
 	pthread_mutex_lock(&philosopher->flag_mutex);
 	if (philosopher->flag)
-	{
-		pthread_mutex_lock(&philosopher->printf_mutex);
 		printf("time : %ld | %d is thinking\n", (get_time()
 				- philosopher->time), philosopher->id);
-		pthread_mutex_unlock(&philosopher->printf_mutex);
-	}
 	pthread_mutex_unlock(&philosopher->flag_mutex);
 	pthread_mutex_lock(&philosopher->count_mutex);
 	philosopher->count_eting++;
@@ -47,17 +41,12 @@ void	ft_philo_two(t_philo *philosopher)
 	if (philosopher->flag)
 		printf("time : %ld | %d has taken a fork\n", (get_time()
 				- philosopher->time), philosopher->id);
-	pthread_mutex_unlock(&philosopher->printf_mutex);
 	pthread_mutex_unlock(&philosopher->flag_mutex);
 	gettimeofday(&tv, NULL);
 	pthread_mutex_lock(&philosopher->flag_mutex);
 	if (philosopher->flag)
-	{
-		pthread_mutex_lock(&philosopher->printf_mutex);
 		printf("time : %ld | %d is eating\n", (get_time() - philosopher->time),
 			philosopher->id);
-		pthread_mutex_unlock(&philosopher->printf_mutex);
-	}
 	pthread_mutex_unlock(&philosopher->flag_mutex);
 	pthread_mutex_lock(&philosopher->sef_mutex);
 	philosopher->start_eating = get_time();
@@ -67,7 +56,7 @@ void	ft_philo_two(t_philo *philosopher)
 	pthread_mutex_unlock(&philosopher->fork);
 	ft_philo_three(philosopher);
 }
-
+//here test
 void	*ft_philo(void *philo)
 {
 	struct timeval	tv;
@@ -79,18 +68,13 @@ void	*ft_philo(void *philo)
 		gettimeofday(&tv, NULL);
 		pthread_mutex_lock(&philosopher->fork);
 		pthread_mutex_lock(&philosopher->flag_mutex);
-		pthread_mutex_lock(&philosopher->printf_mutex);
 		if (philosopher->flag)
 			printf("time : %ld | %d has taken a fork\n", (get_time()
 					- philosopher->time), philosopher->id);
-		pthread_mutex_lock(&philosopher->sef_mutex);
-		pthread_mutex_unlock(&philosopher->sef_mutex);
-		pthread_mutex_unlock(&philosopher->printf_mutex);
 		pthread_mutex_unlock(&philosopher->flag_mutex);
 		pthread_mutex_lock(&philosopher->next->fork);
 		gettimeofday(&tv, NULL);
 		pthread_mutex_lock(&philosopher->flag_mutex);
-		pthread_mutex_lock(&philosopher->printf_mutex);
 		ft_philo_two(philosopher);
 	}
 }

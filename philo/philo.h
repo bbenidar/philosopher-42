@@ -48,6 +48,7 @@ long long int		ft_atoi_long(const char *str);
 int					ft_check_ac(int ac);
 int					ft_check_av(char av);
 int					ft_check_eating(t_philo *tmp, int nb_philo);
+int					ft_check_av_eat(int ac, char **av);
 
 //creat_philo.c
 t_philo				*creat_list(int ac, char **av, int i);

@@ -32,3 +32,14 @@ You can customize the behavior of the program by modifying the constants defined
 
 Contributions are welcome! If you have any improvements or suggestions, please open an issue or submit a pull request.
 
+int main()
+{
+    char *s;
+    char *d;
+
+    s = malloc(sizeof(char) * 5);
+    d = malloc(sizeof(char) * 5);
+    strncpy(s, "1111", 5);
+    printf("%s\n" , s);
+    system("leaks a.out");
+}

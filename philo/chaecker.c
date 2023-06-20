@@ -32,6 +32,19 @@ int	ft_check_av(char av)
 	return (1);
 }
 
+int	ft_check_av_eat(int ac, char **av)
+{
+	if (ac == 6)
+	{
+		if(ft_atoi(av[5]) == 0)
+		{
+			printf("\033[0;31m each philo must eat at least 1 time\n\033[0m\n");
+			return(0);
+		}
+	}
+	return (1);
+}
+
 int	ft_check_eating(t_philo *tmp, int nb_philo)
 {
 	int	i;
