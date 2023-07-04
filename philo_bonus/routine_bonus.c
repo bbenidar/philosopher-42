@@ -6,7 +6,7 @@
 /*   By: bbenidar <bbenidar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 14:22:38 by bbenidar          #+#    #+#             */
-/*   Updated: 2023/06/10 14:24:24 by bbenidar         ###   ########.fr       */
+/*   Updated: 2023/07/04 12:32:21 by bbenidar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	ft_philo(t_philo *philosopher, int id)
 {
 	struct timeval	tv;
 
+	philosopher->id = id;
 	pthread_create(&philosopher->checker, NULL, ft_dead_check, philosopher);
 	while (1)
 	{

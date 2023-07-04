@@ -6,7 +6,7 @@
 /*   By: bbenidar <bbenidar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:04:23 by bbenidar          #+#    #+#             */
-/*   Updated: 2023/06/10 14:02:27 by bbenidar         ###   ########.fr       */
+/*   Updated: 2023/07/03 13:52:40 by bbenidar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int	ft_check_av_eat(int ac, char **av)
 {
 	if (ac == 6)
 	{
-		if(ft_atoi(av[5]) == 0)
+		if (ft_atoi(av[5]) == 0)
 		{
 			printf("\033[0;31m each philo must eat at least 1 time\n\033[0m\n");
-			return(0);
+			return (0);
 		}
 	}
 	return (1);

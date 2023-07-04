@@ -13,7 +13,7 @@
 NAME = philo
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -pthread #-g -fsanitize=thread 
+FLAGS = -Wall -Wextra -Werror -pthread -g #-fsanitize=thread 
 SRC = philo_main.c utils.c philo_creat.c chaecker.c routine.c  
 
 OBG = $(SRC:.c=.o)
@@ -33,7 +33,7 @@ $(NAME): $(OBG)
 	$(CC) $(FLAGS) $(OBG) -o $(NAME)
 	@echo $(HEAD)
 
-%.o: %.c
+%.o: %.c philo.h
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:

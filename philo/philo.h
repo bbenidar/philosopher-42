@@ -6,7 +6,7 @@
 /*   By: bbenidar <bbenidar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 11:14:12 by bbenidar          #+#    #+#             */
-/*   Updated: 2023/06/10 14:01:55 by bbenidar         ###   ########.fr       */
+/*   Updated: 2023/07/03 13:31:34 by bbenidar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_philo
 	int				id;
 	pthread_t		thread;
 	pthread_mutex_t	fork;
-	pthread_mutex_t	printf_mutex;
 	pthread_mutex_t	sef_mutex;
 	pthread_mutex_t	count_mutex;
 	pthread_mutex_t	flag_mutex;

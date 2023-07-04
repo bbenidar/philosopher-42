@@ -6,7 +6,7 @@
 /*   By: bbenidar <bbenidar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 11:14:18 by bbenidar          #+#    #+#             */
-/*   Updated: 2023/06/11 19:43:53 by bbenidar         ###   ########.fr       */
+/*   Updated: 2023/07/03 13:53:32 by bbenidar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ int	ft_par_check(int ac, char **av)
 	int	i;
 	int	j;
 
-	if (!ft_check_av_eat(ac, av))
-		return (0);
-	if (!ft_check_ac(ac))
+	if (!ft_check_ac(ac) || !ft_check_av_eat(ac, av))
 		return (0);
 	else
 	{
@@ -60,16 +58,11 @@ int	ft_par_check(int ac, char **av)
 
 void	ft_free(t_philo *tmp, int nb_philo)
 {
-	t_philo *tmp2;
 	while (nb_philo > 0)
 	{
-			tmp2 = tmp->next;
-		pthread_mutex_destroy(&tmp->printf_mutex);
 		pthread_mutex_destroy(&tmp->fork);
 		pthread_mutex_destroy(&tmp->sef_mutex);
 		pthread_detach(tmp->thread);
-		free(tmp);
-		tmp = tmp2;
 		nb_philo--;
 	}
 }
@@ -89,11 +82,9 @@ void	main_two(t_philo *tmp, int i, int j)
 				i--;
 				pthread_mutex_unlock(&tmp->flag_mutex);
 			}
-			pthread_mutex_lock(&tmp->printf_mutex);
 			usleep(50);
 			printf("time : %ld |  %d is dead\n", (get_time() - tmp->time),
 				tmp->id);
-			pthread_mutex_unlock(&tmp->printf_mutex);
 			break ;
 		}
 		if (ft_check_eating(tmp, j))

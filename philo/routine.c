@@ -6,7 +6,7 @@
 /*   By: bbenidar <bbenidar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:25:00 by bbenidar          #+#    #+#             */
-/*   Updated: 2023/06/10 14:03:19 by bbenidar         ###   ########.fr       */
+/*   Updated: 2023/07/03 13:56:15 by bbenidar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_philo_two(t_philo *philosopher)
 	pthread_mutex_unlock(&philosopher->fork);
 	ft_philo_three(philosopher);
 }
-//here test
+
 void	*ft_philo(void *philo)
 {
 	struct timeval	tv;

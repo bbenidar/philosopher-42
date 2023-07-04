@@ -6,7 +6,7 @@
 /*   By: bbenidar <bbenidar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 19:08:23 by bbenidar          #+#    #+#             */
-/*   Updated: 2023/06/08 14:42:13 by bbenidar         ###   ########.fr       */
+/*   Updated: 2023/07/03 13:28:46 by bbenidar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_philo	*creat_list(int ac, char **av, int i)
 	philo = malloc(sizeof(t_philo));
 	philo->id = i + 1;
 	pthread_mutex_init(&philo->fork, NULL);
-	pthread_mutex_init(&philo->printf_mutex, NULL);
 	pthread_mutex_init(&philo->sef_mutex, NULL);
 	pthread_mutex_init(&philo->flag_mutex, NULL);
 	pthread_mutex_init(&philo->count_mutex, NULL);
